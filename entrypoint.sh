@@ -5,7 +5,7 @@ echo "==================================="
 echo "Document AI API - Starting..."
 echo "==================================="
 
-# Function to wait for PostgreSQL
+# Função para aguardar o PostgreSQL
 wait_for_postgres() {
     echo "Waiting for PostgreSQL to be ready..."
     while ! pg_isready -h postgres -U user > /dev/null 2>&1; do
@@ -15,7 +15,7 @@ wait_for_postgres() {
     echo "PostgreSQL is up and running!"
 }
 
-# Function to run migrations
+# Função para executar migrações
 run_migrations() {
     echo "Running Alembic migrations..."
     alembic upgrade head
@@ -27,7 +27,7 @@ run_migrations() {
     fi
 }
 
-# Function to create admin user
+# Função para criar usuário admin
 create_admin_user() {
     echo "Checking/creating admin user..."
     python setup_db.py
@@ -38,7 +38,7 @@ create_admin_user() {
     fi
 }
 
-# Main execution
+# Execução principal
 echo ""
 echo "Step 1: Waiting for PostgreSQL..."
 wait_for_postgres
@@ -57,5 +57,5 @@ echo "Starting FastAPI application..."
 echo "==================================="
 echo ""
 
-# Start the application
+# Iniciar a aplicação
 exec uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
