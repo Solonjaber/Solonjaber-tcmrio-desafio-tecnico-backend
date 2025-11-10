@@ -123,6 +123,8 @@ python -m venv venv
 source venv/bin/activate  # Linux/Mac
 # ou
 venv\Scripts\activate  # Windows
+source/Scripts/activate #bash
+(Pode também acrescentar o path do venv no interpretador do VSCode)
 
 # 2. Instalar dependências
 pip install -r requirements.txt
