@@ -127,7 +127,7 @@ O projeto segue princípios de Clean Architecture e SOLID:
 
 ## Instalação e Execução
 
-# Instalar Ollama para o chat IA com o modelo gemma3:4b
+### Instale Ollama: https://ollama.ai para o chat IA com o modelo gemma3:4b
 
 ### Opção 1: Docker (Recomendado)
 
@@ -344,6 +344,8 @@ Após iniciar a aplicação, acesse:
    OPENAI_API_KEY=sk-your-key-here
    ```
 3. Descomente a integração em `app/services/llm_service.py:88-126`
+
+### Mais informações do Ollama
 
 ### Ollama (Local)
 
