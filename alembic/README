@@ -1,0 +1,46 @@
+Generic single-database configuration with support for pgvector.
+
+### Criar uma nova migração
+
+Após modificar os modelos em app/models/, gere uma migração:
+
+```bash
+alembic revision --autogenerate -m "Descrição das alterações"
+```
+
+### Aplicar migrações
+
+```bash
+alembic upgrade head
+```
+
+### Reverter
+
+Reverter uma migração:
+```bash
+alembic downgrade -1
+```
+
+Reverter para uma revisão específica:
+```bash
+alembic downgrade <revision_id>
+```
+
+### Ver histórico de migrações
+
+```bash
+alembic history
+```
+
+### Versão atual
+
+```bash
+alembic current
+```
+
+## Notas Importantes
+
+- Sempre revise as migrações geradas automaticamente antes de aplicar
+- Teste as migrações em desenvolvimento antes de produção
+- A DATABASE_URL é lida do arquivo .env
+- A extensão pgvector deve estar instalada no PostgreSQL

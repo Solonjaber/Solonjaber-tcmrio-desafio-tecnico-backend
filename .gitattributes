@@ -1,0 +1,34 @@
+# Git attributes file to ensure consistent line endings
+
+# Shell scripts should always use LF (Unix) line endings
+*.sh text eol=lf
+
+# Python files should use LF
+*.py text eol=lf
+
+# Docker files should use LF
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+.dockerignore text eol=lf
+
+# Configuration files
+*.ini text eol=lf
+*.conf text eol=lf
+*.cfg text eol=lf
+
+# Markdown and documentation
+*.md text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Environment files
+.env* text eol=lf
+
+# Alembic
+alembic.ini text eol=lf
+alembic/** text eol=lf
