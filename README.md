@@ -127,6 +127,8 @@ O projeto segue princípios de Clean Architecture e SOLID:
 
 ## Instalação e Execução
 
+# Instalar Ollama para o chat IA com o modelo gemma3:4b
+
 ### Opção 1: Docker (Recomendado)
 
 ### 1. Configurar Banco de Dados PostgreSQL
@@ -175,6 +177,8 @@ python setup_db.py
 ### 4. Iniciar Backend
 
 ```bash
+OBS: Manter o Ollama aberto antes de rodar o comando para executar o backend
+
 # Rodar servidor
 uvicorn app.main:app --reload
 
