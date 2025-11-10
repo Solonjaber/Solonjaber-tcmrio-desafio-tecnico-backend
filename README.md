@@ -165,6 +165,9 @@ pip install -r requirements.txt
 ### 3. Inicializar Banco de Dados
 
 ```bash
+# Copiar .env.example para .env
+cp .env.example .env
+
 # Rodar script de setup (cria extensão pgvector, tabelas e usuário admin)
 python setup_db.py
 ```
