@@ -29,23 +29,93 @@ API de processamento e busca semântica em documentos jurídicos e técnicos, de
 O projeto segue princípios de Clean Architecture e SOLID:
 
 ```
-app/
-├── api/              # Camada de apresentação (endpoints)
-│   ├── v1/
-│   │   └── endpoints/
-│   └── dependencies.py
-├── core/             # Configurações e utilitários centrais
-│   ├── config.py
-│   ├── security.py
-│   ├── logging.py
-│   └── exceptions.py
-├── db/               # Configuração de banco de dados
-├── models/           # Modelos SQLAlchemy
-├── repositories/     # Camada de acesso a dados
-├── schemas/          # Schemas Pydantic (DTOs)
-├── services/         # Lógica de negócio
-├── middleware/       # Middlewares customizados
-└── utils/            # Utilitários (validação, extração, chunking)
+├── app/                              # Pacote principal da aplicação
+│   ├── __init__.py
+│   ├── main.py                      # Ponto de entrada FastAPI (routers, middleware, CORS)
+│   │
+│   ├── api/                         # Camada de Apresentação (Presentation Layer)
+│   │   ├── __init__.py
+│   │   ├── dependencies.py          # Dependências FastAPI (autenticação JWT, DB session)
+│   │   └── v1/                      # API versão 1
+│   │       ├── __init__.py
+│   │       ├── auth.py              # Router de autenticação
+│   │       ├── documents.py         # Router de documentos
+│   │       ├── search.py            # Router de busca
+│   │       ├── chat.py              # Router de chat
+│   │       └── endpoints/           # Implementação dos endpoints
+│   │           ├── __init__.py
+│   │           ├── auth.py          # POST /register, /login | GET /me
+│   │           ├── documents.py     # POST /upload | GET /, /{id} | DELETE /{id}
+│   │           ├── search.py        # POST / (busca semântica)
+│   │           └── chat.py          # POST / (chat com LLM)
+│   │
+│   ├── core/                        # Configurações e Componentes Centrais
+│   │   ├── __init__.py
+│   │   ├── config.py                # Settings com Pydantic (env vars, configurações)
+│   │   ├── security.py              # JWT (create/verify token), hashing bcrypt
+│   │   ├── exceptions.py            # Hierarquia de exceções customizadas
+│   │   └── logging.py               # Configuração de logs estruturados (JSON)
+│   │
+│   ├── db/                          # Camada de Infraestrutura - Banco de Dados
+│   │   ├── __init__.py
+│   │   ├── database.py              # SQLAlchemy engine, SessionLocal, get_db()
+│   │   └── base.py                  # Declarative Base para modelos
+│   │
+│   ├── models/                      # Camada de Domínio (Domain Layer)
+│   │   ├── __init__.py              # Entidades de negócio (ORM SQLAlchemy)
+│   │   ├── user.py                  # User (id, email, username, password, documents)
+│   │   ├── document.py              # Document (id, filename, content, owner, vectors)
+│   │   └── vector_store.py          # VectorStore (id, document_id, chunk, embedding)
+│   │
+│   ├── schemas/                     # DTOs - Data Transfer Objects
+│   │   ├── __init__.py              # Validação de entrada/saída com Pydantic
+│   │   ├── auth.py                  # Token, LoginRequest
+│   │   ├── user.py                  # UserCreate, UserResponse, UserUpdate
+│   │   ├── document.py              # DocumentCreate, DocumentResponse, DocumentDetail
+│   │   └── search.py                # SearchQuery, SearchResult, ChatQuery, ChatResponse
+│   │
+│   ├── repositories/                # Camada de Acesso a Dados (Data Access Layer)
+│   │   ├── __init__.py              # Repository Pattern - abstração de persistência
+│   │   ├── user_repository.py       # CRUD de usuários
+│   │   ├── document_repository.py   # CRUD de documentos
+│   │   └── vector_repository.py     # Operações vetoriais (similarity_search, batch insert)
+│   │
+│   ├── services/                    # Camada de Aplicação (Application/Business Logic)
+│   │   ├── __init__.py              # Orquestração de casos de uso
+│   │   ├── auth_service.py          # Autenticação (login, registro, validação)
+│   │   ├── document_service.py      # Upload, processamento, extração, vetorização
+│   │   ├── vector_service.py        # Geração de embeddings, busca semântica
+│   │   └── llm_service.py           # Integração LLM (OpenAI/Azure/Ollama)
+│   │
+│   ├── utils/                       # Utilitários (Helpers)
+│   │   ├── __init__.py
+│   │   ├── file_validator.py        # Validação de arquivo, nome seguro (UUID)
+│   │   ├── text_extractor.py        # Extração de texto (PDF, DOCX)
+│   │   └── text_chunker.py          # Divisão de texto em chunks com overlap
+│   │
+│   └── middleware/                  # Middlewares HTTP Customizados
+│       ├── __init__.py
+│       ├── error_handler.py         # Tratamento global de exceções
+│       └── logging_middleware.py    # Log de requisições/respostas
+│
+├── alembic/                         # Migrations de Banco de Dados
+│   ├── env.py                       # Configuração Alembic
+│   └── versions/                    # Scripts de migração
+│
+├── tests/                           # Testes Automatizados
+│   ├── __init__.py
+│   └── test_*.py                    # Testes unitários e de integração
+│
+├── uploads/                         # Armazenamento de documentos (gerado em runtime)
+│
+├── Dockerfile                       # Imagem Docker da aplicação
+├── docker-compose.yml               # Orquestração (app + postgres)
+├── entrypoint.sh                    # Script de inicialização (migrations + server)
+├── alembic.ini                      # Configuração do Alembic
+├── requirements.txt                 # Dependências Python
+├── setup_db.py                      # Script de inicialização do BD
+├── .env.example                     # Template de variáveis de ambiente
+└── README.md                        # Este arquivo
 ```
 
 ## Pré-requisitos
