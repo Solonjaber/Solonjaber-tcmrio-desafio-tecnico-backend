@@ -1,23 +1,24 @@
-# Git attributes file to ensure consistent line endings
+# Arquivo de atributos Git para garantir finais de linha consistentes
 
-# Shell scripts should always use LF (Unix) line endings
+# Scripts de shell devem sempre usar terminações de linha LF (Unix)
 *.sh text eol=lf
 
-# Python files should use LF
+# Arquivos Python devem usar LF
 *.py text eol=lf
 
-# Docker files should use LF
+# Arquivos Docker devem usar LF
 Dockerfile text eol=lf
 docker-compose.yml text eol=lf
 .dockerignore text eol=lf
 
-# Configuration files
+# Arquivos de configuração
 *.ini text eol=lf
 *.conf text eol=lf
 *.cfg text eol=lf
 
-# Markdown and documentation
+# Markdown e documentação
 *.md text eol=lf
+
 
 # YAML files
 *.yml text eol=lf
