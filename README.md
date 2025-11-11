@@ -1,6 +1,6 @@
 # TCM SmartDocs - Desafio Técnico TCMRio
 
-API de processamento e busca semântica em documentos jurídicos e técnicos, desenvolvida como parte do desafio técnico para a vaga de Desenvolvedor Pleno Python no TCMRio.
+API de processamento e busca semântica em documentos jurídicos e técnicos.
 
 ## Funcionalidades
 
