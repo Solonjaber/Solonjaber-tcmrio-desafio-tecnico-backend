@@ -98,7 +98,7 @@ class DocumentService:
             self.vector_repo.create_batch(document.id, chunks, embeddings)
             logger.info(f"Vetores salvos no banco")
 
-            # 🔧 VOCÊ INTEGRA: Notificar N8n sobre novo documento
+            # VOCÊ INTEGRA: Notificar N8n sobre novo documento
             # await self._notify_n8n(document, user_id)
 
             return document
@@ -112,7 +112,7 @@ class DocumentService:
 
     async def _notify_n8n(self, document: Document, user_id: int):
         """
-        🔧 VOCÊ INTEGRA: Envia notificação para N8n quando documento é criado
+        VOCÊ INTEGRA: Envia notificação para N8n quando documento é criado
 
         PASSOS PARA INTEGRAR:
         1. Criar workflow no N8n com webhook trigger
