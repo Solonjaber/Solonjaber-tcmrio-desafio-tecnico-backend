@@ -1,4 +1,4 @@
-# TCM SmartDocs - Desafio Técnico TCMRio
+# TCM SmartDocs - Projeto para o TCMRio
 
 API de processamento e busca semântica em documentos jurídicos e técnicos.
 
