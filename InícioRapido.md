@@ -1,5 +1,3 @@
-# Quick Start Guide
-
 Guia rápido para iniciar o projeto Document AI API.
 
 ## Início Rápido com Docker (Recomendado)
@@ -225,4 +223,4 @@ Para dúvidas ou problemas:
 
 ---
 
-Desenvolvido para o desafio técnico TCMRio
+Desenvolvido para TCMRio
