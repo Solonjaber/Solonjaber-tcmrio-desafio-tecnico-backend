@@ -531,28 +531,15 @@ alembic upgrade head
 - [ ] Monitoramento com Prometheus/Grafana
 - [ ] CI/CD com GitHub Actions
 
-## Contribuindo
-
-1. Faça fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
-## Licença
-
-Este projeto foi desenvolvido como parte de um desafio técnico.
-
 ## Autor
 
-Desenvolvido por [Seu Nome] como parte do processo seletivo para Desenvolvedor Pleno Python no TCMRio.
+Desenvolvido por Cleverton Jaber
 
 ## Contato
 
-- Email: seu-email@example.com
-- LinkedIn: seu-perfil
-- GitHub: seu-usuario
+- Email: clevertonsage@gmail.com
+- LinkedIn: https://www.linkedin.com/in/cleverton-jaber-513627216
 
 ---
 
-**Nota**: Este projeto foi desenvolvido seguindo as especificações do desafio técnico do TCMRio. Algumas funcionalidades (LLM, N8n) são opcionais e estão preparadas para integração conforme documentado.
+**Nota**: Este projeto foi desenvolvido para o TCMRio. Algumas funcionalidades (LLM, N8n) são opcionais e estão preparadas para integração conforme documentado.
